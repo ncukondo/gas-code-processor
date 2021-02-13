@@ -86,3 +86,4 @@ public/bundle/*
 
 dist
 .clasp.json
+gas/*

@@ -1,0 +1,16 @@
+key1=value1
+[title1]
+content1
+testInline key1:value1
+[title2]
+content2
+<script>
+logger(" --- output [title1] under here ---")
+logger(ref("title1"))
+</script>
+afterScriptText
+
+log:
+ --- output [title1] under here ---
+content1
+testInline key1:value1

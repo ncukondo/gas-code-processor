@@ -4,8 +4,11 @@ const appendDoc = ({ logger }: { logger: (log: string) => void }) => (
   docId: string,
   content: string
 ) => {
-  DocumentApp.openById(docId).getBody().editAsText().appendText(`\n${content}`);
-  logger(`executed:appendDoc(${docId},${content})`);
+  const doc = DocumentApp.openById(docId);
+  doc.getBody().editAsText().appendText(`\n${content}`);
+  logger(
+    `executed:appendDoc(id:${docId},content:${content},url${doc.getUrl()})`
+  );
 };
 
 const testAppendDoc = () => {

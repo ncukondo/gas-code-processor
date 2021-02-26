@@ -3,8 +3,7 @@ import {
   map,
   Parser,
   between,
-  pipe,
-  seq,
+  of,
   takeTo,
 } from "@ncukondo/parser-combinator-ts";
 import {
@@ -66,17 +65,20 @@ const makeScriptProcessor = (argsMaker: ArgsMaker, info: ProcessInfo) => (
 };
 
 const stripe = <A, B>(a: Parser<A>, b: Parser<B>) =>
-  pipe(a, plus(many(seq(b, a))), flatDeep);
+  of(a, b).to(many, plus(a), flatDeep);
 
 const makeInlineScriptProcessor = (argsMaker: ArgsMaker, info: ProcessInfo) => (
   text: string
 ) => {
-  const processCode = makeScriptProcessor(argsMaker, info);
+  const processScript = makeScriptProcessor(argsMaker, info);
   const processInlineCode = map((inlineCode: string) => {
     try {
-      const { returnValue } = processCode(`return (${inlineCode})`);
+      const { returnValue } = processScript(`return (${inlineCode})`);
       return `${returnValue}`;
     } catch (e) {
+      info.logger(
+        `error when running inline script:\n ${e}\n\ncode:${inlineCode}`
+      );
       return `\${${`${e}`}}`;
     }
   });
@@ -91,8 +93,8 @@ const processTextToken = (
   info: ProcessInfo,
   token: TextToken
 ) => {
-  const processInlineCode = makeInlineScriptProcessor(argsMaker, info);
-  const text = processInlineCode(token.text);
+  const processInlineScript = makeInlineScriptProcessor(argsMaker, info);
+  const text = processInlineScript(token.text);
   return { ...info, text: info.text + text };
 };
 
@@ -114,8 +116,13 @@ const processScriptToken = (
   token: ScriptToken
 ) => {
   const processScript = makeScriptProcessor(argsMaker, info);
-  const { info: newInfo } = processScript(token.code);
-  return { ...newInfo, text: info.text + token.text };
+  try {
+    const { info: newInfo } = processScript(token.code);
+    return { ...newInfo, text: info.text + token.text };
+  } catch (e) {
+    info.logger(`error when running script:\n ${e}\n\ncode:${token.code}`);
+    return { ...info, text: `${info.text}\nerror:(${e})\n${token.text}` };
+  }
 };
 
 const makeParserOptionDefault = {

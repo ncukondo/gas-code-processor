@@ -3,6 +3,7 @@ import type { ProcessCodeOption } from "./codeProcessor";
 import { testAppendDoc as _testAppendDoc } from "./func/appendDoc";
 import { testInc as _testInc } from "./func/inc";
 import { testInsertToSheet as _testInsertToSheet } from "./func/insertToSheet";
+import { testPrependToNextEvent as _testPrependToNextEvent } from "./func/prependToNextEvent";
 import { testSaveLog as _testSaveLog } from "./func/saveLog";
 import { makeArgs, makeParser } from "./parser";
 
@@ -12,6 +13,10 @@ export function testInsertToSheet() {
 
 export function testInc() {
   _testInc();
+}
+
+export function testPrependToNextEvent() {
+  _testPrependToNextEvent();
 }
 
 export function testSaveLog() {

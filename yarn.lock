@@ -520,10 +520,10 @@
     "@rollup/pluginutils" "^4.1.0"
     estree-walker "^2.0.1"
 
-"@ncukondo/parser-combinator-ts@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@ncukondo/parser-combinator-ts/-/parser-combinator-ts-1.1.1.tgz#8e65a2ac280cb4ba76f2c500216acbaed8f178fb"
-  integrity sha512-Rkic2EwOzGfGvNBrSbY5WgaW8iIYLsQJa+5FXsIrIK+CEEqRorYSLeenAi4D2HWJoOFQUp6aEVLS/jWNpUqCtg==
+"@ncukondo/parser-combinator-ts@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@ncukondo/parser-combinator-ts/-/parser-combinator-ts-1.1.2.tgz#9c2ad13e36f5b2a808b1c91632766d4bf0fa169d"
+  integrity sha512-f2s3rMTrQIEKuKhiglgDah/VYDUKBpK0FzhRYck9eQpcg/ihKPXFq/lJ7bwIlNdSmKNTqkHfCbIcFyoy3sLLcQ==
   dependencies:
     tslib "^2.0.3"
 

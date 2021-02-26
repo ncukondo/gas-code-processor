@@ -55,7 +55,7 @@ const asALine = combine(wrap(/ */), asSingleLine);
 const scriptStart = () => {
   const _ = / */;
   const with_ = (...a: ParserLike[]) => [...a.map((u) => [_, u]), _].flat();
-  const types = anyOf(`"text/javascript"`, `'text/javascript'`);
+  const types = of(`text/javascript`).to(wrap(anyOf(`"`, `'`)));
   const content = of(" ", ...with_("type", "=", types)).to(fallback(""));
   return of(`<script`, content, ">").to(asALine);
 };

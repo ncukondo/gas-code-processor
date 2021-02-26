@@ -17,7 +17,7 @@
     "open": "npx clasp open"
   },
   "dependencies": {
-    "@ncukondo/parser-combinator-ts": "^1.1.1"
+    "@ncukondo/parser-combinator-ts": "^1.1.2"
   },
   "devDependencies": {
     "@google/clasp": "^2.3.0",

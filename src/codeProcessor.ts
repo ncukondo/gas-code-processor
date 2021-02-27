@@ -1,6 +1,7 @@
 import { appendDoc } from "./func/appendDoc";
 import { inc } from "./func/inc";
 import { insertToSheet } from "./func/insertToSheet";
+import { loadText } from "./func/loadText";
 import { prependToNextEvent } from "./func/prependToNextEvent";
 import { saveLog } from "./func/saveLog";
 import { setNextEventText } from "./func/setNextEventText";
@@ -18,6 +19,7 @@ const importFuncs = makeArgItem((info) => () =>
     get,
     prependToNextEvent,
     setNextEventText,
+    loadText,
   } as const)(info)
 );
 

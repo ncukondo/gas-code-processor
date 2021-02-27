@@ -5,6 +5,8 @@ import { testInc as _testInc } from "./func/inc";
 import { testInsertToSheet as _testInsertToSheet } from "./func/insertToSheet";
 import { testPrependToNextEvent as _testPrependToNextEvent } from "./func/prependToNextEvent";
 import { testSaveLog as _testSaveLog } from "./func/saveLog";
+import { testSetNextEventText as _testSetNextEventText } from "./func/setNextEventText";
+
 import { makeArgs, makeParser } from "./parser";
 
 export function testInsertToSheet() {
@@ -17,6 +19,10 @@ export function testInc() {
 
 export function testPrependToNextEvent() {
   _testPrependToNextEvent();
+}
+
+export function testSetNextEventText() {
+  _testSetNextEventText();
 }
 
 export function testSaveLog() {

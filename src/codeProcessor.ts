@@ -3,6 +3,7 @@ import { inc } from "./func/inc";
 import { insertToSheet } from "./func/insertToSheet";
 import { prependToNextEvent } from "./func/prependToNextEvent";
 import { saveLog } from "./func/saveLog";
+import { setNextEventText } from "./func/setNextEventText";
 import { makeArgItem, makeArgs, makeParser } from "./parser";
 import type { ArgsMaker } from "./parser";
 
@@ -16,6 +17,7 @@ const importFuncs = makeArgItem((info) => () =>
     saveLog,
     get,
     prependToNextEvent,
+    setNextEventText,
   } as const)(info)
 );
 

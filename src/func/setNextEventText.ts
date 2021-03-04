@@ -28,7 +28,7 @@ const setNextEventText = ({ logger }: { logger: (log: string) => void }) => (
     logger(`cannot find event ${eventName}`);
     return;
   }
-  const text = `${content}`.replace(/\n/g, "<br>");
+  const text = `${encodeURIComponent(content)}`.replace(/\n/g, "<br>");
   event.setDescription(text);
 
   logger(

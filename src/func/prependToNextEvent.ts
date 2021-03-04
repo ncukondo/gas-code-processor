@@ -28,7 +28,9 @@ const prependToNextEvent = ({ logger }: { logger: (log: string) => void }) => (
     logger(`cannot find event ${eventName}`);
     return;
   }
-  const text = `${content}\n`.replace(/\n/g, "<br>") + event.getDescription();
+  const text =
+    `${encodeURIComponent(content)}\n`.replace(/\n/g, "<br>") +
+    event.getDescription();
   event.setDescription(text);
 
   logger(

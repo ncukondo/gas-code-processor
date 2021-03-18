@@ -11,6 +11,15 @@ const addToDate = (src: Date, delta?: Partial<typeof deltaDefault>) => {
   );
 };
 
+const escapeHtml = (text: string) => {
+  const template = {
+    "<": "&lt;",
+    ">": "&gt;",
+  };
+  const reg = new RegExp(`[${Object.keys(template).join("")}]`, "g");
+  return text.replace(reg, (match) => template[match]);
+};
+
 const setNextEventText = ({ logger }: { logger: (log: string) => void }) => (
   calName: string,
   eventName: string,
@@ -28,7 +37,7 @@ const setNextEventText = ({ logger }: { logger: (log: string) => void }) => (
     logger(`cannot find event ${eventName}`);
     return;
   }
-  const text = `${encodeURIComponent(content)}`.replace(/\n/g, "<br>");
+  const text = `${escapeHtml(content)}`.replace(/\n/g, "<br>");
   event.setDescription(text);
 
   logger(

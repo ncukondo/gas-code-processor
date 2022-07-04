@@ -7,6 +7,7 @@ import {
   between,
   anyOf,
   ParserLike,
+  alt,
 } from "@ncukondo/parser-combinator-ts";
 import type { Parser } from "@ncukondo/parser-combinator-ts";
 import {
@@ -19,6 +20,7 @@ import {
   wrap,
   asSingleLine,
   fallback,
+  pick,
 } from "@ncukondo/parser-combinator-ts/operators.js";
 
 interface ScriptToken {
@@ -57,7 +59,9 @@ const scriptStart = () => {
   const with_ = (...a: ParserLike[]) => [...a.map((u) => [_, u]), _].flat();
   const types = of(`text/javascript`).to(wrap(anyOf(`"`, `'`)));
   const content = of(" ", ...with_("type", "=", types)).to(fallback(""));
-  return of(`<script`, content, ">").to(asALine);
+  const scriptStartMark = of(`<script`, content, ">").to(asALine);
+  const anotherStartMark = of(":::", of(":").to(many)).to(pick(0)).to(asALine);
+  return alt(scriptStartMark, anotherStartMark);
 };
 
 const scriptToken = (): Parser<ScriptToken> => {

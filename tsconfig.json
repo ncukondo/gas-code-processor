@@ -5,7 +5,7 @@
     "lib": ["ESNEXT"],
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "rootDir": "./src",
+    "baseUrl": "./",
     "paths": {
       "#/*": ["./src/*"]
     }

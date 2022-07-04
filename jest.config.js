@@ -9,7 +9,7 @@ module.exports = {
   transformIgnorePatterns: ["^node_modules/[^@].+\\.(j|t)s$"],
   globals: {
     "ts-jest": {
-      tsconfig: "./__test__/tsconfig.jest.json",
+      tsconfig: "./src/__test__/tsconfig.jest.json",
     },
   },
 };

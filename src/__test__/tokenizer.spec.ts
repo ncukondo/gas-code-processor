@@ -6,7 +6,7 @@ import {
   keyValueBlockTitle,
   textToken,
   scriptStart,
-} from "../src/tokenizer";
+} from "../tokenizer";
 
 declare const test: jest.It;
 declare const expect: jest.Expect;

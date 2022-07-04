@@ -1,14 +1,14 @@
 import { readFileSync } from "fs";
 import path from "path";
-import { makeEvent } from "../src/eventMaker";
+import { makeEvent } from "../eventMaker";
 import {
   makeParser,
   makeScriptProcessor,
   makeInlineScriptProcessor,
   makeArgs,
   makeArgItem,
-} from "../src/parser";
-import type { OnEndParam, ProcessInfo } from "../src/parser";
+} from "../parser";
+import type { OnEndParam, ProcessInfo } from "../parser";
 
 declare const test: jest.It;
 declare const expect: jest.Expect;
